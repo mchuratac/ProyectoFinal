@@ -2,8 +2,11 @@
 from django.contrib.auth.models import User
 import uuid
 from django.db import models
+from django.utils import timezone
+
 
 # Create your models here.
+
 class TipoIngrediente(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nombre = models.CharField(max_length=100, null = True, blank=True)
@@ -17,14 +20,16 @@ class Rol(models.Model):
     nombre = models.CharField(max_length=100, null = True , blank=True)
     status = models.CharField(max_length=100, null = True , blank=True)
 
+    def __str__(self):
+        return (self.nombre)
+
 class Ingrediente(models.Model):
     id = models.UUIDField (primary_key=True, default= uuid.uuid4, editable = False)
     nombre = models.CharField(max_length=100, null = True , blank=True)
     tipo = models.ForeignKey (TipoIngrediente,on_delete= models.CASCADE)
     precio = models.DecimalField(max_digits=16, decimal_places=4)
     cantidad = models.CharField(max_length=100, null = True , blank=True)
-    #imagen = models.ImageField()
-
+    imagen = models.ImageField(upload_to="pictures/%y", null=True)
 
     def __str__(self):
         return f'{str(self.nombre)}'
@@ -33,12 +38,18 @@ class EstadoPedido(models.Model):
     id = models.UUIDField(primary_key=True, default= uuid.uuid4, editable = False)
     nombre = models.CharField(max_length=255, null = True, blank=True)
 
+    def __str__(self):
+        return (self.nombre)
+
 class Pedido(models.Model):
     id = models.UUIDField (primary_key=True, default= uuid.uuid4, editable= False )
     fecha_pedido = models.DateTimeField()
     monto_total = models.DecimalField(max_digits=16, decimal_places=4)
     estado = models.ForeignKey(EstadoPedido, on_delete = models.CASCADE)
     usuario = models.ForeignKey(User, on_delete= models.CASCADE)
+
+    def __str__(self):
+        return (self.estado)
 
 class DetallePedido(models.Model):
     id = models.UUIDField (primary_key=True, default=uuid.uuid4, editable = False )
@@ -47,5 +58,6 @@ class DetallePedido(models.Model):
     cantidad = models.IntegerField()
     total = models.DecimalField(max_digits=16, decimal_places=4)
 
-
+    def __str__(self):
+        return (self.ingrediente)
 
