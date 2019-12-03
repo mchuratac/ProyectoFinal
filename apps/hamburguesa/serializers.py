@@ -17,17 +17,17 @@ class IngredienteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EstadoPedidoSerializers(serializers.ModelSerializer):
+class EstadoPedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = EstadoPedido
         fields = '__all__'
 
-class PedidoSerializers(serializers.ModelSerializer):
+class PedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
         fields = '__all__'
 
-class DetallePedidoSerializers(serializers.ModelSerializer):
+class DetallePedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = DetallePedido
         fields = '__all__'
