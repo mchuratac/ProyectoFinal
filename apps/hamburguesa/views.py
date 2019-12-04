@@ -5,27 +5,27 @@ from .models import TipoIngrediente, Ingrediente, Rol, Pedido, DetallePedido, Es
 
 # Create your views here.
 
-class TipoIngredienteApiList(generics.ListAPIView):
+class TipoIngredienteApiList(generics.ListCreateAPIView):
     queryset = TipoIngrediente.objects.all()
     serializer_class = TipoIngredienteSerializer
 
-class IngredienteApiList(generics.ListAPIView):
+class IngredienteApiList(generics.ListCreateAPIView):
     queryset = Ingrediente.objects.all()
     serializer_class = IngredienteSerializer
 
-class RolApiList(generics.ListAPIView):
+class RolApiList(generics.ListCreateAPIView):
     queryset = Ingrediente.objects.all()
     serializer_class = RolSerializer
 
-class EstadoPedidoApiList(generics.ListAPIView):
+class EstadoPedidoApiList(generics.ListCreateAPIView):
     queryset = EstadoPedido.objects.all()
     serializer_class = EstadoPedidoSerializer
 
-class PedidoApiList(generics.ListAPIView):
+class PedidoApiList(generics.ListCreateAPIView):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
 
-class DetallePedidoApiList(generics.ListAPIView):
+class DetallePedidoApiList(generics.ListCreateAPIView):
     queryset = DetallePedido.objects.all()
     serializer_class = DetallePedidoSerializer
 
