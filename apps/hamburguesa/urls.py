@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import TipoIngredienteApiList, IngredienteApiList , RolApiList, EstadoPedidoApiList,PedidoApiList, DetallePedidoApiList 
+from django.urls import path,include
 
+from .viewsets import TipoIngredienteViewSet, IngredienteViewSet, RolViewSet, EstadoPedidoViewSet, PedidoViewSet, DetallePedidoViewSet
+from rest_framework import routers
+
+
+#from .views import TipoIngredienteApiList, IngredienteApiList , RolApiList, EstadoPedidoApiList,PedidoApiList, DetallePedidoApiList 
+'''
 urlpatterns = [
     path('list_tipoingrediente/', TipoIngredienteApiList.as_view()),
     path('list_ingrediente/', IngredienteApiList.as_view()),
@@ -9,4 +14,18 @@ urlpatterns = [
     path('list_pedido/', PedidoApiList.as_view()),
     path('list_detallepedido/', DetallePedidoApiList.as_view()),
 ]
+'''
 
+router = routers.DefaultRouter()
+router.register(r'TipoIngredientes', TipoIngredienteViewSet)
+router.register(r'Ingredientes', IngredienteViewSet)
+router.register(r'Rols', RolViewSet)
+router.register(r'EstadoPedidos', EstadoPedidoViewSet)
+router.register(r'Pedidos', PedidoViewSet)
+router.register(r'DetallePedidos', DetallePedidoViewSet)
+
+
+urlpatterns = [
+    path('hamburguesa/', include (router.urls))
+
+]
