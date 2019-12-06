@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets,filters
 from .serializers import TipoIngredienteSerializer,IngredienteSerializer,  RolSerializer, EstadoPedidoSerializer, PedidoSerializer, DetallePedidoSerializer
 from .models import TipoIngrediente, Ingrediente,Rol, EstadoPedido,Pedido, DetallePedido
 
@@ -26,6 +26,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
 class DetallePedidoViewSet(viewsets.ModelViewSet):
     serializer_class = DetallePedidoSerializer
     queryset = DetallePedido.objects.all()
-
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('precio')
     
       
