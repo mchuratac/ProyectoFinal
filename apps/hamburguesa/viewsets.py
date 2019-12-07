@@ -1,6 +1,20 @@
-from rest_framework import viewsets,filters
-from .serializers import TipoIngredienteSerializer,IngredienteSerializer,  RolSerializer, EstadoPedidoSerializer, PedidoSerializer, DetallePedidoSerializer
-from .models import TipoIngrediente, Ingrediente,Rol, EstadoPedido,Pedido, DetallePedido
+from rest_framework import viewsets,filters, permissions
+from .serializers import  AuthSerializer,UsuarioSerializer,RolSerializer,TipoIngredienteSerializer,IngredienteSerializer, EstadoPedidoSerializer, PedidoSerializer, DetallePedidoSerializer
+from django.contrib.auth.models import User
+from .models import Usuario,Rol,TipoIngrediente, Ingrediente, EstadoPedido,Pedido, DetallePedido
+
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    serializer_class = UsuarioSerializer
+    queryset = Usuario.objects.all()
+
+class RolViewSet(viewsets.ModelViewSet):
+    serializer_class = RolSerializer
+    queryset = Rol.objects.all()
+
+class AuthViewSet(viewsets.ModelViewSet):
+    serializer_class = AuthSerializer
+    queryset = User.objects.all()
 
 class TipoIngredienteViewSet(viewsets.ModelViewSet):
     serializer_class = TipoIngredienteSerializer

@@ -1,20 +1,35 @@
 from rest_framework import serializers
-from .models import  TipoIngrediente, Rol, Ingrediente, EstadoPedido, Pedido, DetallePedido
+from .models import  Usuario, Rol, User, TipoIngrediente,  Ingrediente, EstadoPedido, Pedido, DetallePedido
+from django.contrib.auth.models import User
 
-class TipoIngredienteSerializer(serializers.ModelSerializer):
+
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TipoIngrediente
+        model = Usuario
         fields = '__all__'
+
 
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rol
         fields = '__all__'
+
+class AuthSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username','password', 'first_name']
     
 class IngredienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingrediente
         fields = '__all__'
+
+class TipoIngredienteSerializer(serializers.ModelSerializer):
+    
+    ingrediente = IngredienteSerializer()
+    class Meta:
+        model = TipoIngrediente
+        fields = ['id','tipo','ingrediente']
 
 
 class EstadoPedidoSerializer(serializers.ModelSerializer):

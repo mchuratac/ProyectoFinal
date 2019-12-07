@@ -1,6 +1,8 @@
 from django.urls import path,include
 
-from .viewsets import TipoIngredienteViewSet, IngredienteViewSet, RolViewSet, EstadoPedidoViewSet, PedidoViewSet, DetallePedidoViewSet
+from .viewsets import  UsuarioViewSet,RolViewSet 
+from .viewsets import TipoIngredienteViewSet, IngredienteViewSet
+from .viewsets import EstadoPedidoViewSet, PedidoViewSet, DetallePedidoViewSet
 from rest_framework import routers
 
 
