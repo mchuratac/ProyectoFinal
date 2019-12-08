@@ -19,9 +19,12 @@ urlpatterns = [
 '''
 
 router = routers.DefaultRouter()
-router.register(r'TipoIngredientes', TipoIngredienteViewSet)
-router.register(r'Ingredientes', IngredienteViewSet)
+router.register(r'Usuarios', UsuarioViewSet)
 router.register(r'Rols', RolViewSet)
+router.register(r'Ingredientes', IngredienteViewSet)
+router.register(r'TipoIngredientes', TipoIngredienteViewSet)
+
+
 router.register(r'EstadoPedidos', EstadoPedidoViewSet)
 router.register(r'Pedidos', PedidoViewSet)
 router.register(r'DetallePedidos', DetallePedidoViewSet)

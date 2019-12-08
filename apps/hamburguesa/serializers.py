@@ -25,11 +25,11 @@ class IngredienteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TipoIngredienteSerializer(serializers.ModelSerializer):
+
     
-    ingrediente = IngredienteSerializer()
     class Meta:
         model = TipoIngrediente
-        fields = ['id','tipo','ingrediente']
+        fields = ['id','tipo']
 
 
 class EstadoPedidoSerializer(serializers.ModelSerializer):
