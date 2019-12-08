@@ -1,1 +1,1 @@
-web: gunicorn hamburguesa.wsgi
+web: gunicorn hamburguesa.wsgi --log-file
